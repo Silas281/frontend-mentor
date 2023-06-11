@@ -1,13 +1,48 @@
+/*
+System Colors
+*/
+:root {
+  --purpleColor: #AD1FEA;
+  --blueColorMain: #4661E6;
+  --blueColorLight: #62BCFA;
+  --darkBlueMain: #373F68;
+  --darkBlueLight: #3A4374;
+  --darkBlueLighter: #3A4374;
+  --whiteColor: #FFFFFF;
+  --blueWhite: #F2F4FF;
+  --blueWhiteLigh: #F7F8FD;
+  --seaBlue: #CFD7FF;
+  --orange: #F49F85;
+  --red: #D73737;
+  --redLight: #E98888;
+
+}
+
+* {
+  font-family: 'Jost';
+  box-sizing: border-box;
+
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* box-sizing: border-box; */
+  background: #F2F2F2;
+  /* overflow-x: hidden; */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--whiteColor);
+  width: fit-content;
 }

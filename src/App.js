@@ -1,57 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+
 import './App.css';
+import Feedbacks from './components/feedback/feedbacks/feedbacks';
+import FeedbackDetails from './components/feedback/FeedbackDetails/FeedbackDetails';
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import Roadmap from './components/roadmap/Roadmap';
+import EditFeedback from './components/feedback/editFeedback/EditFeedback';
+import AddFeedback from './components/feedback/addFeedback/AddFeedback';
+import Planned from './components/roadmap/statuses/planned/Planned';
+import InProgress from './components/roadmap/statuses/inProgress/InProgress';
+import Live from './components/roadmap/statuses/live/Live';
+import Suggestion from './components/roadmap/statuses/suggestion/Suggestion';
+
+
+
+
+const appRouter = createBrowserRouter(createRoutesFromElements(
+  <Route>
+    <Route path='/' element={<Feedbacks />} />
+    <Route path='/feedback-details/:id' element={<FeedbackDetails />} />
+    <Route path='/add-feedback' element={<AddFeedback />} />
+    <Route path='/edit-feedback/:id' element={<EditFeedback />} />
+    <Route path='/roadmap' element={<Roadmap />} >
+      <Route path='suggestion' element={<Suggestion />} />
+      <Route path='planned' element={<Planned />} />
+      <Route path='' element={<Planned />} />
+      <Route path='in-progress' element={<InProgress />} />
+      <Route path='live' element={<Live />} />
+    </Route>
+  </Route>
+));
 
 function App() {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <RouterProvider router={appRouter} />
   );
 }
 

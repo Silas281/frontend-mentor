@@ -1,0 +1,54 @@
+/*
+Empty Feedback 
+*/
+/*System Colors */
+
+:root {
+    --purpleColor: #AD1FEA;
+    --purpleColorLight: #C75AF6;
+    --blueColorMain: #4661E6;
+    --blueColorLight: #62BCFA;
+    --darkBlueMain: #373F68;
+    --darkBlueLight: #3A4374;
+    --darkBlueLighter: #3A4374;
+    --whiteColor: #FFFFFF;
+    --blueWhite: #F2F4FF;
+    --blueWhiteLigh: #F7F8FD;
+    --seaBlue: #CFD7FF;
+    --orange: #F49F85;
+    --red: #D73737;
+    --redLight: #E98888;
+
+}
+
+.empty-feedback {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    background: var(--whiteColor);
+    height: 90%;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.empty-feedback div {
+    text-align: center;
+    color: var(--darkBlueLight);
+}
+
+.empty-feedback div p {
+    text-align: center;
+    color: var(--darkBlueLight);
+    font-size: 12px;
+}
+
+/* On Mobile */
+@media screen and (max-width: 600px) {
+    .empty-feedback {
+
+        height: 70vh;
+
+    }
+}

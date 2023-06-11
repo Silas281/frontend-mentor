@@ -1,0 +1,483 @@
+/*
+System Colors
+*/
+:root {
+    --purpleColor: #AD1FEA;
+    --blueColorMain: #4661E6;
+    --blueColorLight: #62BCFA;
+    --darkBlueMain: #373F68;
+    --darkBlueLight: #3A4374;
+    --darkBlueLighter: #3A4374;
+    --whiteColor: #FFFFFF;
+    --blueWhite: #F2F4FF;
+    --blueWhiteLigh: #F7F8FD;
+    --seaBlue: #CFD7FF;
+    --orange: #F49F85;
+    --red: #D73737;
+    --redLight: #E98888;
+
+}
+
+
+
+/*
+TOP-NAV
+*/
+
+.roadmap-main .top-nav {
+    background: var(--darkBlueMain);
+    height: 80px;
+    height: 72px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+}
+
+.roadmap-main .nav-left {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+
+}
+
+
+
+.roadmap-main .go-back {
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: -5px;
+
+    margin-left: -15px;
+
+}
+
+.roadmap-main .go-back .back-icon {
+    color: var(--whiteColor);
+    margin-bottom: -5px;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0;
+}
+
+.roadmap-main .roadmap-left-caption {
+    margin-top: 5px;
+    margin-bottom: 0;
+    color: var(--whiteColor);
+}
+
+.roadmap-main .back-text {
+    color: var(--whiteColor);
+    cursor: pointer;
+
+}
+
+.roadmap-main .back-text:hover {
+    text-decoration: underline var(--whiteColor);
+}
+
+.roadmap-main .label {
+    color: var(--whiteColor);
+    margin-right: 10px;
+}
+
+.roadmap-main .nav-header-text {
+    font-weight: 300px;
+    color: var(--whiteColor);
+    margin-left: 10px;
+    margin-right: 20px;
+
+}
+
+.roadmap-main .sort {
+    background: #FFFFFF;
+    box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
+    border-radius: 10px;
+    width: 255px;
+
+    /* height: 192px; */
+
+}
+
+.roadmap-main .sort:focus {
+    outline: none;
+    border: none;
+}
+
+
+.roadmap-main .add-feedback-btn {
+    background: var(--purpleColor);
+    border-radius: 10px;
+    color: var(--whiteColor);
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+    transition: .5s all ease-in-out;
+
+}
+
+.roadmap-main .add-feedback-btn:hover {
+    background: var(--purpleColorLight);
+}
+
+.roadmap-main .add-feedback-btn .fi-plus {
+    margin-right: 10px;
+}
+
+.roadmap-main {
+    width: 90%;
+    margin: auto;
+}
+
+.task-header .task-status-name {
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    /* identical to box height */
+
+    letter-spacing: -0.25px;
+
+    color: #3A4374;
+}
+
+.task-status-header-desc {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+
+    color: #647196;
+}
+
+.single-task {
+    background: var(--whiteColor);
+    border-radius: 5px;
+    padding: 20px 10px;
+    margin-bottom: 20px;
+
+}
+
+.status-suggestion .single-task {
+    border-top: 7px solid var(--red);
+
+}
+
+.status-planned .single-task {
+    border-top: 7px solid var(--orange);
+
+}
+
+.status-inProgress .single-task {
+    border-top: 7px solid var(--purpleColor);
+}
+
+.status-live .single-task {
+    border-top: 7px solid var(--blueColorLight);
+}
+
+.comments-votes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.roadmap-main .upvotes {
+    display: flex;
+    align-items: center;
+    padding: 20px 10px;
+}
+
+
+.roadmap-main .upvote-btn {
+    background: var(--blueWhite);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: var(--blueColorMain);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: .5s all ease-in-out;
+    gap: 7px;
+
+}
+
+.roadmap-main .upvote-btn:hover {
+    background: #CFD7FF;
+}
+
+.upvote-btn.active {
+    background: var(--blueColorMain);
+    color: var(--whiteColor);
+}
+
+.roadmap-main .upvote-btn.active .upvote-count {
+    color: var(--whiteColor);
+}
+
+.roadmap-main .upvote-icon {
+    font-size: 24px;
+}
+
+.roadmap-main .upvote-count {
+    font-size: 18px;
+    color: var(--darkBlueLight);
+
+}
+
+.roadmap-main .comments-tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.roadmap-main .comments-icon {
+    margin-right: 10px;
+    color: #CDD2EE;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+.roadmap-main .comments-count {
+    color: var(--darkBlueLight);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: -0.222222px;
+}
+
+.statuses-nav {
+    margin-bottom: 20px;
+    justify-content: space-between;
+
+}
+
+.statuses-nav .task-status-name {
+    margin-bottom: 0;
+}
+
+.statuses-nav .task-status-header-desc {
+    margin-top: 0;
+}
+
+.task-statuses,
+.statuses-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 10px;
+}
+
+/* .single-task .status-title::before {
+    content: '.';
+    width: 7px;
+    height: 7px;
+    display: inline-block;
+    background: var(--purpleColor);
+    border-radius: 50%;
+    margin-bottom: 0;
+} */
+
+.wrap-status {
+    display: flex;
+    align-items: center;
+}
+
+/* .wrap-status::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+    margin-right: 10px;
+} */
+
+.status-planned .wrap-status::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: var(--orange);
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.status-inProgress .wrap-status::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: var(--purpleColor);
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.status-live .wrap-status::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: var(--blueColorLight);
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.status-title,
+p {
+    margin: 0;
+}
+
+
+.single-task .status-title {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+
+    color: #647196;
+}
+
+/* .wrap-status {
+    display: flex;
+    align-items: center;
+} */
+
+.task-name {
+    font-weight: 700;
+    font-size: 18px;
+    color: #3A4374;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.task-name:hover {
+    color: #4661E6;
+
+}
+
+.task-desc {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    margin-bottom: 10px;
+    color: #647196;
+}
+
+.single-task .category {
+    background: #F2F4FF;
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: var(--blueColorMain);
+    border: none;
+    outline: none;
+}
+
+/* .single-task .category:hover {
+    background: #CFD7FF;
+}
+
+.single-task .category.active {
+    background: var(--blueColorMain);
+} */
+
+
+.nav-link,
+.nav-link-active {
+    text-decoration: none;
+
+}
+
+
+
+
+/* Mobile Responsiveness */
+
+/* On Tablets */
+@media screen and (min-width: 700px) {
+    .small {
+        display: none;
+    }
+}
+
+/* On Tablets */
+@media screen and (max-width: 992px) {
+    .roadmap-main {
+        width: 100%;
+        padding: 10px;
+        margin: auto;
+
+    }
+
+
+}
+
+
+
+/* On Mobile */
+@media screen and (max-width: 600px) {
+    .task-header .task-status-name {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .task-status-header-desc,
+    .task-status-header-desc,
+    .task-status-header-desc {
+        display: none;
+    }
+
+
+
+    .task-statuses {
+        grid-template-columns: 100%;
+    }
+
+    .statuses-nav h3 {
+
+        padding-bottom: 20px;
+
+    }
+
+    .statuses-nav {
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid gray;
+        width: 100%;
+    }
+
+    .task-status-name.last {
+        justify-self: end !important;
+    }
+
+    .statuses-nav .task-header {
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-link-active h3 {
+        text-decoration: none;
+        border-bottom: 5px solid #AD1FEA;
+
+    }
+
+    .large {
+        display: none;
+    }
+
+}
