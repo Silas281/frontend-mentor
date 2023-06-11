@@ -22,8 +22,12 @@ System Colors
   font-family: 'Jost';
   box-sizing: border-box;
   /* overflow-x: hidden; */
-  word-wrap: break-word;
 
+
+}
+
+p {
+  word-wrap: break-word;
 }
 
 body {
