@@ -13,6 +13,7 @@ import { countComments } from '../../../utilities/Funcs';
 
 const FeedbackDetails = () => {
     const { id } = useParams();
+
     const [toggleReply, setToggleReply] = useState(-1);
     const [commentContent, setCommentContent] = useState('');
     const [replyContent, setReplyContent] = useState('');
@@ -163,7 +164,7 @@ const FeedbackDetails = () => {
                                     <div key={index} className='main-comment'>
                                         <div className='profile'>
                                             <div className='image'>
-                                                <img src='./user-images/image-elijah.jpg' alt='name' />
+                                                <img src='./assets/user-images/image-elijah.jpg' alt='name' />
                                             </div>
                                             <div className='name'>
                                                 <h3>{reply.user.name}</h3>
