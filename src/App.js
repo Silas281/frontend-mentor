@@ -18,7 +18,7 @@ import Suggestion from './components/roadmap/statuses/suggestion/Suggestion';
 const appRouter = createBrowserRouter(createRoutesFromElements(
   <Route>
     <Route path='/' element={<Feedbacks />} />
-    <Route path='/feedback-details/:id' element={<FeedbackDetails />} />
+    <Route path='/feedback-details' element={<FeedbackDetails />} />
     <Route path='/add-feedback' element={<AddFeedback />} />
     <Route path='/edit-feedback/:id' element={<EditFeedback />} />
     <Route path='/roadmap' element={<Roadmap />} >

@@ -21,6 +21,8 @@ System Colors
 * {
   font-family: 'Jost';
   box-sizing: border-box;
+  /* overflow-x: hidden; */
+  word-wrap: break-word;
 
 }
 
@@ -33,7 +35,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   /* box-sizing: border-box; */
   background: #F2F2F2;
-  /* overflow-x: hidden; */
+
+
 }
 
 code {

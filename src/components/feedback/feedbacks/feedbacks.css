@@ -24,7 +24,7 @@
     grid-template-columns: 24% 75%;
     column-gap: 20px;
     row-gap: 20px;
-    margin: 10px;
+    margin: auto;
 
     justify-content: center;
 
@@ -306,12 +306,12 @@ TOP-NAV
 
 
 .feedback {
-    height: 151px;
+    height: fit-content;
     left: 450px;
     background: #FFFFFF;
     border-radius: 10px;
     margin: 20px 0;
-
+    padding: 20px 10px;
     display: grid;
     grid-template-columns: 15% 75% 10%;
 }
@@ -425,6 +425,19 @@ Link {
 
 
 }
+
+/* animate drawer from rigt*/
+@keyframes sidebar {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
 
 @media screen and (min-width: 992px) {
     .small {
@@ -563,7 +576,23 @@ Link {
 
     } */
 
-    .drawer {
+    .drawer.close {
+        right: -10px;
+        position: absolute;
+        width: 0px;
+        height: 595px;
+        top: 100px;
+        padding-top: 25px;
+        background: #F7F8FD;
+        /* transition: 0.5s all ease-in-out; */
+        z-index: 99;
+
+
+
+
+    }
+
+    .drawer.open {
         right: 10px;
         position: absolute;
         width: 271px;
@@ -573,6 +602,8 @@ Link {
         background: #F7F8FD;
         transition: 0.3s all ease-in-out;
         z-index: 99;
+
+
     }
 
     .backdrop {
@@ -586,4 +617,39 @@ Link {
         opacity: 0.4;
 
     }
+}
+
+
+/* animate drawer from right */
+@keyframes sidebar-open {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* animate drawer to close */
+@keyframes sidebar-close {
+    0% {
+        width: 271px;
+
+    }
+
+    100% {
+        width: 0px;
+
+    }
+}
+
+/* Apply animation when opening */
+.drawer.open {
+    animation: sidebar-open 0.5s forwards;
+}
+
+/* Apply animation when closing */
+.drawer.close {
+    animation: sidebar-close .7s forwards;
 }

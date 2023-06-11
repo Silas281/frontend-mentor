@@ -4,7 +4,7 @@ import { IoChevronBack } from 'react-icons/io5';
 import { FiChevronUp } from "react-icons/fi";
 import { FaComment } from "react-icons/fa";
 import "./FeedbackDetails.css";
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCurrentUser, fetchCurrentUser } from '../../../features/User/UserSlice';
@@ -12,11 +12,15 @@ import { selectAllFeedbacks, addComment, addReply } from '../../../features/feed
 import { countComments } from '../../../utilities/Funcs';
 
 const FeedbackDetails = () => {
-    const { id } = useParams();
+    const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    const id = params.get('id');
+    // const { id } = useParams();
 
     const [toggleReply, setToggleReply] = useState(-1);
     const [commentContent, setCommentContent] = useState('');
     const [replyContent, setReplyContent] = useState('');
+    const maxLength = 600;
 
     const navigate = useNavigate();
     const currentUser = useSelector(selectCurrentUser);
@@ -164,7 +168,7 @@ const FeedbackDetails = () => {
                                     <div key={index} className='main-comment'>
                                         <div className='profile'>
                                             <div className='image'>
-                                                <img src='./assets/user-images/image-elijah.jpg' alt='name' />
+                                                <img src={reply.user.image} alt='name' />
                                             </div>
                                             <div className='name'>
                                                 <h3>{reply.user.name}</h3>
@@ -249,12 +253,13 @@ const FeedbackDetails = () => {
                     placeholder='Type your comment here'
                     rows="6"
                     value={commentContent}
+                    maxLength={maxLength}
                     onChange={(e) => setCommentContent(e.target.value)}
                 >
 
                 </textarea>
                 <div className='add-desc'>
-                    <p>125 Characters Left</p>
+                    <p>{maxLength - commentContent.length} Characters Left</p>
                     <button className='post-comment-btn' onClick={postCommment} >Post Comment</button>
                 </div>
             </div>

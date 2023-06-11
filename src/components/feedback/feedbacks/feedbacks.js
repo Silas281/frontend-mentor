@@ -129,7 +129,7 @@ const Feedbacks = () => {
                     </div>
                 </div>
 
-                {toggleDrawer && (<div className='drawer'>
+                {toggleDrawer && (<div className={`drawer ${toggleDrawer ? 'open' : 'close'}`}>
                     <div className='categories-container small'>
                         <ul className='categories'>
                             {categories.map((cat, index) => (
@@ -180,7 +180,7 @@ const Feedbacks = () => {
 
                         </div>
                         <div className='feedback-content'>
-                            <Link to={`/feedback-details/${feedback.id}`} className='link' >
+                            <Link to={`/feedback-details?id=${feedback.id}`} className='link' >
                                 <h3> {feedback.title}</h3>
                             </Link>
                             <div>

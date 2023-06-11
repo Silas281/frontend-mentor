@@ -310,7 +310,7 @@ textarea::placeholder {
 
     .profile {
         display: grid;
-        grid-template-columns: 30% 30% 40%;
+        grid-template-columns: 15% 30% 40%;
         align-items: start;
         /* column-gap: 10px; */
     }

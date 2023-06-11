@@ -26,7 +26,7 @@ const Roadmap = () => {
 
     const navigate = useNavigate();
     const goBack = () => {
-        navigate(-1);
+        navigate('/');
     }
 
 
@@ -131,7 +131,7 @@ const Roadmap = () => {
                                 <span className='status-title'>{feedback.status}</span>
                             </div>
 
-                            <Link to={`/feedback-details/${feedback.id}`} className='task-name'> <h3 className='task-name'>{feedback.title}</h3> </Link>
+                            <Link to={`/feedback-details?id=${feedback.id}`} className='task-name'> <h3 className='task-name'>{feedback.title}</h3> </Link>
                             <p className='task-desc'>{feedback.description}</p>
                             <button className='category' type='button'>
                                 {feedback.category}
@@ -163,7 +163,7 @@ const Roadmap = () => {
                                 <span className='status-title'>{feedback.status}</span>
                             </div>
 
-                            <Link to={`/feedback-details/${feedback.id}`} className='task-name'> <h3 className='task-name'>{feedback.title}</h3> </Link>
+                            <Link to={`/feedback-details?id=${feedback.id}`} className='task-name'> <h3 className='task-name'>{feedback.title}</h3> </Link>
                             <p className='task-desc'>{feedback.description}</p>
                             <button className='category' type='button'>
                                 {feedback.category}
@@ -196,7 +196,7 @@ const Roadmap = () => {
                                 <span className='status-title'>{feedback.status}</span>
                             </div>
 
-                            <Link to={`/feedback-details/${feedback.id}`} className='task-name'> <h3 className='task-name'>{feedback.title}</h3> </Link>
+                            <Link to={`/feedback-details?id=${feedback.id}`} className='task-name'> <h3 className='task-name'>{feedback.title}</h3> </Link>
                             <p className='task-desc'>{feedback.description}</p>
                             <button className='category' type='button'>
                                 {feedback.category}
@@ -229,7 +229,7 @@ const Roadmap = () => {
                                 <span className='status-title'>{feedback.status}</span>
                             </div>
 
-                            <Link to={`/feedback-details/${feedback.id}`} className='task-name'> <h3 className='task-name'>{feedback.title}</h3> </Link>
+                            <Link to={`/feedback-details?id=${feedback.id}`} className='task-name'> <h3 className='task-name'>{feedback.title}</h3> </Link>
                             <p className='task-desc'>{feedback.description}</p>
                             <button className='category' type='button'>
                                 {feedback.category}
