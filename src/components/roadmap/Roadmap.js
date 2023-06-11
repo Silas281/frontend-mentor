@@ -6,19 +6,14 @@ import { FaComment } from "react-icons/fa";
 import { IoChevronBack } from 'react-icons/io5';
 import { Link, Outlet, useNavigate, NavLink } from 'react-router-dom';
 import "./roadmap.css";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { countComments } from '../../utilities/Funcs';
-import { selectAllFeedbacks, fetchFeedbacks, selectFilteredFeedbacks, selectAllSuggestions, selectAllPlanned, selectAllInProgress, selectAllLive } from '../../features/feedbacks/FeedbackSlice';
-import Suggestion from './statuses/suggestion/Suggestion';
-import Planned from './statuses/planned/Planned';
-import InProgress from './statuses/inProgress/InProgress';
-import Live from './statuses/live/Live';
+import { selectAllFeedbacks, selectAllSuggestions, selectAllPlanned, selectAllInProgress, selectAllLive } from '../../features/feedbacks/FeedbackSlice';
 
 
 const Roadmap = () => {
     const [StatusesCount, setStatusesCount] = useState([]);
 
-    const dispatch = useDispatch();
     const feedbacks = useSelector(selectAllFeedbacks);
     const filteredSuggestions = useSelector(selectAllSuggestions);
     const fliteredPlanned = useSelector(selectAllPlanned);
@@ -34,7 +29,10 @@ const Roadmap = () => {
         navigate(-1);
     }
 
-    const countStatuses = () => {
+
+
+    useEffect(() => {
+        //dispatch(fetchFeedbacks())
         const statusCounts = {};
 
         feedbacks.forEach((feedback) => {
@@ -46,14 +44,8 @@ const Roadmap = () => {
             }
         });
         setStatusesCount(statusCounts);
-        //console.log(statusCounts);
-    }
 
-    useEffect(() => {
-        //dispatch(fetchFeedbacks())
-        countStatuses();
-
-    }, [])
+    }, [feedbacks])
 
 
     return (

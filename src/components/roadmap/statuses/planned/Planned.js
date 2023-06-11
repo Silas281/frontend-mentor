@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { FiChevronUp } from "react-icons/fi";
 
 import { FaComment } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectAllPlanned, fetchFeedbacks } from '../../../../features/feedbacks/FeedbackSlice';
+import { useSelector } from 'react-redux';
+import { selectAllPlanned } from '../../../../features/feedbacks/FeedbackSlice';
 import { countComments } from '../../../../utilities/Funcs';
 
 
 const Planned = () => {
-    const dispatch = useDispatch();
-
     const fliteredPlanned = useSelector(selectAllPlanned);
-
-
 
     useEffect(() => {
         //dispatch(fetchFeedbacks())
-
-
     }, [])
 
     return (

@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { FiChevronUp } from "react-icons/fi";
 
 import { FaComment } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchFeedbacks, selectAllInProgress } from '../../../../features/feedbacks/FeedbackSlice';
+import { useSelector } from 'react-redux';
+import { selectAllInProgress } from '../../../../features/feedbacks/FeedbackSlice';
 import { countComments } from '../../../../utilities/Funcs';
 
 
 const InProgress = () => {
-
-    const dispatch = useDispatch();
-
-
     const fliteredInProgress = useSelector(selectAllInProgress);
 
     useEffect(() => {
         //dispatch(fetchFeedbacks())
-
-
     }, [])
 
     return (

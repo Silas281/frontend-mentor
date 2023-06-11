@@ -1,24 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { FiChevronUp } from "react-icons/fi";
-
 import { FaComment } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchFeedbacks, selectAllLive } from '../../../../features/feedbacks/FeedbackSlice';
+import { useSelector } from 'react-redux';
+import { selectAllLive } from '../../../../features/feedbacks/FeedbackSlice';
 import { countComments } from '../../../../utilities/Funcs';
 
 const Live = () => {
-
-    const dispatch = useDispatch();
-
-    const filteredLive = useSelector(selectAllLive)
-
-
-
+    const filteredLive = useSelector(selectAllLive);
     useEffect(() => {
         //dispatch(fetchFeedbacks())
-
-
     }, [])
 
     return (

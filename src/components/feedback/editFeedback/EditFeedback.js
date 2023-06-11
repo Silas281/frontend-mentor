@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { IoChevronBack, IoAddSharp, IoPencilSharp } from 'react-icons/io5';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { IoChevronBack, IoPencilSharp } from 'react-icons/io5';
+import { useNavigate, useParams } from 'react-router-dom';
 import './EditFeedback.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { editFeedback, selectAllFeedbacks, deleteFeedback } from '../../../features/feedbacks/FeedbackSlice';
@@ -61,7 +61,7 @@ const EditFeedback = () => {
             setNewStatus(feedback.status);
 
         }
-    }, [])
+    }, [id, feedbacks])
 
     return (
         <div className='add-feedback-main'>

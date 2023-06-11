@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { IoChevronBack, IoAddSharp } from 'react-icons/io5';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './AddFeedback.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { addFeedback, selectAllFeedbacks } from '../../../features/feedbacks/FeedbackSlice'
@@ -10,8 +10,8 @@ const AddFeedback = () => {
     const [description, setNewDescription] = useState('')
     const [category, setNewCategory] = useState('')
     const [status, setNewStatus] = useState('planned')
-    const [upvotes, setNewVotes] = useState(0)
-    const [comments, setNewComments] = useState([])
+    const [upvotes] = useState(0)
+    const [comments] = useState([])
     const [touchedTile, setTouchedTile] = useState(false)
     const [touchedDescription, setTouchedDescription] = useState(false)
 

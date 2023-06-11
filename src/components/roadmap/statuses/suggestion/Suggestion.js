@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { FiChevronUp } from "react-icons/fi";
 
 import { FaComment } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchFeedbacks, selectAllSuggestions } from '../../../../features/feedbacks/FeedbackSlice';
+import { useSelector } from 'react-redux';
+import { selectAllSuggestions } from '../../../../features/feedbacks/FeedbackSlice';
 import { countComments } from '../../../../utilities/Funcs';
 
 const Suggestion = () => {
-    const dispatch = useDispatch();
+
     const filteredSuggestions = useSelector(selectAllSuggestions);
 
 

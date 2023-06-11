@@ -8,7 +8,7 @@ import "./feedbacks.css";
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { countComments } from '../../../utilities/Funcs';
-import { selectAllFeedbacks, fetchFeedbacks, selectFilteredFeedbacks, selectCategory, selectStatus, selectFilteredStatuses } from '../../../features/feedbacks/FeedbackSlice';
+import { selectAllFeedbacks, selectFilteredFeedbacks, selectCategory } from '../../../features/feedbacks/FeedbackSlice';
 
 
 
@@ -16,9 +16,9 @@ const Feedbacks = () => {
 
     const [toggleDrawer, setDrawerToggle] = useState(false);
     const [category, setNewCategory] = useState('all');
-    const [categories, setNewCategories] = useState(['All', 'UI', 'UX', 'Enhancement', 'Bug', 'Feature'])
+    const [categories] = useState(['All', 'UI', 'UX', 'Enhancement', 'Bug', 'Feature'])
     const [statuses, setStatuses] = useState([]);
-    const [sort, setSort] = useState('');
+
 
 
 
@@ -33,7 +33,11 @@ const Feedbacks = () => {
         dispatch(selectCategory(cat))
     }
 
-    const countStatuses = () => {
+
+
+
+    useEffect(() => {
+        //dispatch(fetchFeedbacks())
         const statusCounts = {};
 
         feedbacks.forEach((feedback) => {
@@ -45,38 +49,9 @@ const Feedbacks = () => {
             }
         });
         setStatuses(statusCounts);
-        //console.log(statusCounts);
-    }
-
-    // const handleSort = (property, ascending = true) => {
-    //     const sortOrder = ascending ? 1 : -1;
-    //     filteredFeedbacks.sort((a, b) => {
-    //         const valueA = a[property];
-    //         const valueB = b[property];
-
-    //         if (valueA < valueB) {
-    //             return -1 * sortOrder;
-    //         }
-    //         if (valueA > valueB) {
-    //             return 1 * sortOrder;
-    //         }
-    //         return 1;
-    //     });
-    //     return filteredFeedbacks;
-
-    // }
 
 
-
-
-    useEffect(() => {
-        //dispatch(fetchFeedbacks())
-        countStatuses();
-        // Sort feedbacks by upvotes in descending order
-        //filteredFeedbacks = [...filteredFeedbacks].sort((a, b) => b.upvotes - a.upvotes);
-
-
-    }, [])
+    }, [feedbacks])
 
 
 

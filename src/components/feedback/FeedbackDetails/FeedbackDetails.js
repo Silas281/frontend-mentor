@@ -63,7 +63,7 @@ const FeedbackDetails = () => {
         dispatch(fetchCurrentUser())
         //console.log(currentUser.name);
         // console.log(feedback)
-    }, [currentUser])
+    }, [currentUser, dispatch])
 
 
     const goBack = () => {
