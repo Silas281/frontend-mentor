@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { FiChevronUp } from "react-icons/fi";
 
 import { FaComment } from "react-icons/fa";
@@ -9,11 +9,12 @@ import { countComments } from '../../../../utilities/Funcs';
 
 
 const InProgress = () => {
+    //get all in progress feedbacks
     const fliteredInProgress = useSelector(selectAllInProgress);
 
-    useEffect(() => {
-        //dispatch(fetchFeedbacks())
-    }, [])
+    // useEffect(() => {
+    //     //dispatch(fetchFeedbacks())
+    // }, [])
 
     return (
         <div className='task-statuses'>

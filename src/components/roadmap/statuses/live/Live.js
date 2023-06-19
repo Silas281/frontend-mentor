@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { FiChevronUp } from "react-icons/fi";
 import { FaComment } from "react-icons/fa";
 import { Link } from 'react-router-dom';
@@ -7,10 +7,11 @@ import { selectAllLive } from '../../../../features/feedbacks/FeedbackSlice';
 import { countComments } from '../../../../utilities/Funcs';
 
 const Live = () => {
+    //get all live feedbacks
     const filteredLive = useSelector(selectAllLive);
-    useEffect(() => {
-        //dispatch(fetchFeedbacks())
-    }, [])
+    // useEffect(() => {
+    //     //dispatch(fetchFeedbacks())
+    // }, [])
 
     return (
         <div className='task-statuses'>

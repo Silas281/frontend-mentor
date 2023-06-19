@@ -593,7 +593,7 @@ Link {
     }
 
     .drawer.open {
-        right: 10px;
+        right: 21px;
         position: absolute;
         width: 271px;
         height: 595px;

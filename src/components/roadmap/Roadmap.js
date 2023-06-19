@@ -7,13 +7,15 @@ import { IoChevronBack } from 'react-icons/io5';
 import { Link, Outlet, useNavigate, NavLink } from 'react-router-dom';
 import "./roadmap.css";
 import { useSelector } from 'react-redux';
-import { countComments } from '../../utilities/Funcs';
+import { countComments, countStatuses } from '../../utilities/Funcs';
 import { selectAllFeedbacks, selectAllSuggestions, selectAllPlanned, selectAllInProgress, selectAllLive } from '../../features/feedbacks/FeedbackSlice';
 
 
 const Roadmap = () => {
+    //usestate to store the number of feedbacks in each status
     const [StatusesCount, setStatusesCount] = useState([]);
 
+    //get all feedbacks from each status
     const feedbacks = useSelector(selectAllFeedbacks);
     const filteredSuggestions = useSelector(selectAllSuggestions);
     const fliteredPlanned = useSelector(selectAllPlanned);
@@ -23,7 +25,7 @@ const Roadmap = () => {
 
 
 
-
+    // routing handling
     const navigate = useNavigate();
     const goBack = () => {
         navigate('/');
@@ -32,18 +34,11 @@ const Roadmap = () => {
 
 
     useEffect(() => {
-        //dispatch(fetchFeedbacks())
-        const statusCounts = {};
 
-        feedbacks.forEach((feedback) => {
-            const { status } = feedback;
-            if (statusCounts.hasOwnProperty(status)) {
-                statusCounts[status] += 1;
-            } else {
-                statusCounts[status] = 1;
-            }
-        });
-        setStatusesCount(statusCounts);
+        //dispatch(fetchFeedbacks())
+
+
+        setStatusesCount(countStatuses(feedbacks));
 
     }, [feedbacks])
 

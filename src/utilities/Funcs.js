@@ -24,3 +24,20 @@ export const countComments = (feedback) => {
 
     return count;
 }
+
+export const countStatuses = (feedbacks) => {
+
+
+    //count the number of feedbacks with each status
+    const statusCounts = {};
+    feedbacks.forEach((feedback) => {
+        const { status } = feedback;
+        if (statusCounts.hasOwnProperty(status)) {
+            statusCounts[status] += 1;
+        } else {
+            statusCounts[status] = 1;
+        }
+    });
+
+    return statusCounts;
+}

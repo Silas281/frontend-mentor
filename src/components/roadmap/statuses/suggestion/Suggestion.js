@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { FiChevronUp } from "react-icons/fi";
 
 import { FaComment } from "react-icons/fa";
@@ -8,15 +8,15 @@ import { selectAllSuggestions } from '../../../../features/feedbacks/FeedbackSli
 import { countComments } from '../../../../utilities/Funcs';
 
 const Suggestion = () => {
-
+    //get all suggestions feedbacks
     const filteredSuggestions = useSelector(selectAllSuggestions);
 
 
 
 
-    useEffect(() => {
-        //dispatch(fetchFeedbacks())
-    }, [])
+    // useEffect(() => {
+    //     //dispatch(fetchFeedbacks())
+    // }, [])
 
     return (
         <div className='task-statuses'>

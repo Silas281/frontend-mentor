@@ -7,13 +7,13 @@ import FeedbackEmpty from "../feedbackEmpty/FeedbackEmpty";
 import "./feedbacks.css";
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { countComments } from '../../../utilities/Funcs';
+import { countComments, countStatuses } from '../../../utilities/Funcs';
 import { selectAllFeedbacks, selectFilteredFeedbacks, selectCategory } from '../../../features/feedbacks/FeedbackSlice';
 
 
 
 const Feedbacks = () => {
-
+    //useState hooks
     const [toggleDrawer, setDrawerToggle] = useState(false);
     const [category, setNewCategory] = useState('all');
     const [categories] = useState(['All', 'UI', 'UX', 'Enhancement', 'Bug', 'Feature'])
@@ -21,13 +21,15 @@ const Feedbacks = () => {
 
 
 
-
+    //useSelector and useDispatch hooks
     const dispatch = useDispatch();
     const feedbacks = useSelector(selectAllFeedbacks);
     let filteredFeedbacks = useSelector(selectFilteredFeedbacks);
 
+    //handleToggleSideBar function
     const handleToggleSideBar = () => setDrawerToggle(!toggleDrawer)
 
+    //handleSetCategory function
     const HandleSetCategory = (cat) => {
         setNewCategory(cat);
         dispatch(selectCategory(cat))
@@ -35,20 +37,12 @@ const Feedbacks = () => {
 
 
 
-
+    //useEffect hooks
     useEffect(() => {
         //dispatch(fetchFeedbacks())
-        const statusCounts = {};
 
-        feedbacks.forEach((feedback) => {
-            const { status } = feedback;
-            if (statusCounts.hasOwnProperty(status)) {
-                statusCounts[status] += 1;
-            } else {
-                statusCounts[status] = 1;
-            }
-        });
-        setStatuses(statusCounts);
+        //update the statuses state
+        setStatuses(countStatuses(feedbacks));
 
 
     }, [feedbacks])
