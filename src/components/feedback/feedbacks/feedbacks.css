@@ -580,6 +580,7 @@ Link {
         width: 100%;
         margin-top: 0;
         gap: 0;
+        padding: 0 !important;
     }
 
     .top-nav {
@@ -590,9 +591,25 @@ Link {
         right: 0;
         top: 79px;
         z-index: 999;
+    }
 
+    .add-feedback-btn {
+        padding: 7px 7px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 10px;
+    }
 
+    .sort-container .sort-selected .sort-selected-icon {
+        margin-top: 7px;
+        font-size: 15px;
+    }
 
+    .sort-container .sort-selected {
+
+        font-size: 10px;
+        width: fit-content;
     }
 
     .feedbacks-main .feedback {
@@ -602,6 +619,51 @@ Link {
     .feedback-spacer-small {
         height: 120px;
     }
+
+    .add-comment-container {
+
+        font-size: 12px;
+    }
+
+    .comments-title {
+
+        font-weight: 700;
+        font-size: 12px;
+    }
+
+    .edit-feedback-btn {
+
+
+        padding: 9px 15px;
+    }
+
+    .form-title {
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 35px;
+        color: #3A4374;
+        margin-top: 10px;
+    }
+
+    .upvotes {
+        justify-self: start;
+        padding: 20px 0px;
+    }
+
+    .upvote-count {
+        font-size: 10px;
+    }
+
+    .feedback-content p,
+    .feedback-content h3 {
+        font-size: 12px;
+    }
+
+    .comments-icon {
+        margin-right: 5px;
+
+    }
+
 
     .side-nav {
         height: fit-content;

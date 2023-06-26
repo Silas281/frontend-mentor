@@ -22,7 +22,6 @@ const AddFeedback = () => {
 
 
 
-
     const dispatch = useDispatch();
     const feedbacks = useSelector(selectAllFeedbacks);
 
@@ -33,7 +32,14 @@ const AddFeedback = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(feedbacks)
+        //console.log(feedbacks)
+        if (title === '' || description === '') {
+            setTouchedTile(true);
+            setTouchedDescription(true);
+            //alert('Please fill all fields')
+            return
+        }
+
         const newFeedback = {
             id: feedbacks.length + 1,
             title,
@@ -87,6 +93,8 @@ const AddFeedback = () => {
         setStatusToggleSelect(!toggleStatusSelect)
 
     }
+
+
 
     return (
         <div className='add-feedback-main'>
@@ -177,7 +185,8 @@ const AddFeedback = () => {
 
                         <div className='other-btns'>
                             <button type='button' className='cancel-btn' onClick={goBack} >Cancel</button>
-                            <button type='submit' className='submit-btn'>Add Feedback</button>
+                            <button type='submit' className='submit-btn' >Add Feedback</button>
+                            {/* <button type='submit' className='submit-btn' disabled={title === '' || description === ''} >Add Feedback</button> */}
                         </div>
                     </div>
                 </form>

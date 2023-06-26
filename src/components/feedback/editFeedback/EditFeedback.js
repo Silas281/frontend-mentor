@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { editFeedback, selectAllFeedbacks, deleteFeedback } from '../../../features/feedbacks/FeedbackSlice';
 import capitalizeFirstLetter from '../../../utilities/captaliseFirstLetter'
 
+
 const EditFeedback = () => {
     const { id } = useParams();
     const feedbacks = useSelector(selectAllFeedbacks);
@@ -31,6 +32,12 @@ const EditFeedback = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         //edit feedback
+        if (title === '' || description === '') {
+            setTouchedTitle(true);
+            setTouchedDescription(true);
+            //alert('Please fill all fields')
+            return
+        }
         const editedFeedback = {
             id,
             title,

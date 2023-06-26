@@ -308,9 +308,18 @@ textarea::placeholder {
         padding-right: 10px;
     }
 
+    .comments-section {
+
+        padding: 10px;
+        font-size: 12px;
+
+    }
+
+
+
     .profile {
         display: grid;
-        grid-template-columns: 15% 30% 1fr;
+        grid-template-columns: 20% 30% 1fr;
         align-items: start;
         /* column-gap: 10px; */
     }

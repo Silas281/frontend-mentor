@@ -74,6 +74,14 @@ const FeedbackDetails = () => {
     const goBack = () => {
         navigate('/');
     }
+    //handle toggle reply
+    const handleToggleReply = (index) => {
+        if (toggleReply === parseInt(index)) {
+            setToggleReply(-1);
+        } else {
+            setToggleReply(parseInt(index));
+        }
+    }
 
 
     return (
@@ -137,7 +145,7 @@ const FeedbackDetails = () => {
                                 <p>{comment.user.username}</p>
                             </div>
                             <div className='reply' onClick={() => {
-                                setToggleReply(comment.id)
+                                handleToggleReply(comment.id)
                             }}>
                                 <span >Reply</span>
                             </div>

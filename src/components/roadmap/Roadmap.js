@@ -8,7 +8,7 @@ import { Link, Outlet, useNavigate, NavLink } from 'react-router-dom';
 import "./roadmap.css";
 import { useSelector } from 'react-redux';
 import { countComments, countStatuses } from '../../utilities/Funcs';
-import { selectAllFeedbacks, selectAllSuggestions, selectAllPlanned, selectAllInProgress, selectAllLive } from '../../features/feedbacks/FeedbackSlice';
+import { selectAllFeedbacks, selectAllPlanned, selectAllInProgress, selectAllLive } from '../../features/feedbacks/FeedbackSlice';
 
 
 const Roadmap = () => {
@@ -17,7 +17,7 @@ const Roadmap = () => {
 
     //get all feedbacks from each status
     const feedbacks = useSelector(selectAllFeedbacks);
-    const filteredSuggestions = useSelector(selectAllSuggestions);
+    // const filteredSuggestions = useSelector(selectAllSuggestions);
     const fliteredPlanned = useSelector(selectAllPlanned);
     const fliteredInProgress = useSelector(selectAllInProgress);
     const filteredLive = useSelector(selectAllLive)
@@ -70,10 +70,10 @@ const Roadmap = () => {
             </div>
 
             <div className='statuses-nav large'>
-                <div className='task-header'>
+                {/* <div className='task-header'>
                     <h3 className='task-status-name'>Suggestions ({StatusesCount['suggestion']})</h3>
                     <p className='task-status-header-desc'>Released features</p>
-                </div>
+                </div> */}
                 <div className='task-header'>
 
                     <h3 className='task-status-name'>Planned ({StatusesCount['planned']})</h3>
@@ -90,12 +90,12 @@ const Roadmap = () => {
             </div>
 
             <div className='statuses-nav small'>
-                <div className='task-header'>
+                {/* <div className='task-header'>
                     <NavLink to='/roadmap/suggestion' className={({ isActive }) => isActive ? "nav-link-active" : "nav-link"}>
                         <h3 className='task-status-name'>Suggestions ({StatusesCount['suggestion']})</h3>
                     </NavLink>
                     <p className='task-status-header-desc'>Ideas prioritized for research</p>
-                </div>
+                </div> */}
                 <div className='task-header'>
                     <NavLink to='/roadmap/planned' className={({ isActive }) => isActive ? "nav-link-active" : "nav-link"}>
                         <h3 className='task-status-name'>Planned ({StatusesCount['planned']})</h3>
@@ -119,7 +119,7 @@ const Roadmap = () => {
                 <Planned />
                 <InProgress />
                 <Live /> */}
-                <div className='status-suggestion'>
+                {/* <div className='status-suggestion'>
                     {filteredSuggestions.map((feedback, index) => (
                         <div key={feedback.id} className='single-task '>
                             <div className='wrap-status'>
@@ -150,7 +150,7 @@ const Roadmap = () => {
                         </div>
                     ))}
 
-                </div>
+                </div> */}
                 <div className='status-planned'>
                     {fliteredPlanned.map((feedback, index) => (
                         <div key={feedback.id} className='single-task '>
