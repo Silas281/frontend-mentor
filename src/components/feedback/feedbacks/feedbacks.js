@@ -9,7 +9,7 @@ import "./feedbacks.css";
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { countComments, countStatuses } from '../../../utilities/Funcs';
-import { selectAllFeedbacks, selectFilteredFeedbacks, selectCategory } from '../../../features/feedbacks/FeedbackSlice';
+import { selectAllFeedbacks, selectFilteredFeedbacks, selectCategory, sortBy } from '../../../features/feedbacks/FeedbackSlice';
 
 
 
@@ -39,14 +39,22 @@ const Feedbacks = () => {
         dispatch(selectCategory(cat))
     }
 
+    //handle set sort
+    const handleSetSort = (sortFilter) => {
+        setSort(sortFilter)
+        setSortToggle(!sortToggle)
+        dispatch(sortBy(sortFilter))
+
+    }
+
     //handleSortToggle function
     const handleSortToggle = () => setSortToggle(!sortToggle)
 
     //handleSortSelect function
-    const handleSortSelect = (srt) => {
-        setSort(srt);
-        setSortToggle(!sortToggle)
-    }
+    // const handleSortSelect = (srt) => {
+    //     setSort(srt);
+    //     setSortToggle(!sortToggle)
+    // }
 
 
     //useEffect hooks
@@ -113,7 +121,7 @@ const Feedbacks = () => {
                             </div>
                             {sortToggle && (<ul className='sort-list'>
                                 {sortList.map((srt, index) => (
-                                    <li key={index + 1} onClick={() => handleSortSelect(srt)} className={srt === sort ? 'active' : ''}>{srt} {(sort === srt) && (<span> <IoCheckmark /> </span>)} </li>
+                                    <li key={index + 1} onClick={() => handleSetSort(srt)} className={srt === sort ? 'active' : ''}>{srt} {(sort === srt) && (<span> <IoCheckmark /> </span>)} </li>
                                 ))}
                             </ul>)}
                         </div>

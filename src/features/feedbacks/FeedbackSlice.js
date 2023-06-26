@@ -1,4 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {
+    sortByFilterFunc
+} from "../../utilities/sortFuncs";
+
 
 import Data from "../../data.json";
 
@@ -22,7 +26,8 @@ const feedbacksSlice = createSlice({
         loadingFeedbacks: false,
         hasErrorLoadingFeedbacks: false,
         selectedCategory: "all",
-        selectedStatus: "all"
+        selectedStatus: "all",
+        sortByFilter: ''
     },
     reducers: {
         selectCategory: (state, action) => {
@@ -30,6 +35,9 @@ const feedbacksSlice = createSlice({
         },
         selectStatus: (state, action) => {
             state.selectedStatus = action.payload;
+        },
+        sortBy: (state, action) => {
+            state.sortByFilter = action.payload;
         },
         addFeedback: (state, action) => {
             state.feedbacks.push(action.payload);
@@ -130,16 +138,19 @@ export const selectAllFeedbacks = (state) => state.feedbacks.feedbacks;
 
 export const selectFilteredFeedbacks = (state) => {
     const selectedCategory = state.feedbacks.selectedCategory.toLowerCase();
+    const sortByFilter = state.feedbacks.sortByFilter;
+    let feedbacks = state.feedbacks.feedbacks;
 
-    const feedbacks = state.feedbacks.feedbacks;
+    //sortBy upvotes
 
-    if (selectedCategory === 'all') {
-        //console.log("Here", selectedCategory)
-        return feedbacks;
+    if (selectedCategory !== 'all') {
+        //console.log("Here out", selectedCategory)
+        feedbacks = feedbacks.filter((feedback) => feedback.category.toLowerCase() === selectedCategory.toLowerCase());
     }
 
-    //console.log("Here out", selectedCategory)
-    return feedbacks.filter((feedback) => feedback.category.toLowerCase() === selectedCategory.toLowerCase());
+    return sortByFilterFunc(feedbacks, sortByFilter)
+
+
 };
 
 export const selectFilteredStatuses = (state, action) => {
@@ -194,7 +205,8 @@ export const {
     editFeedback,
     deleteFeedback,
     addComment,
-    addReply
+    addReply,
+    sortBy
 
 } = feedbacksSlice.actions;
 //exprt reducer

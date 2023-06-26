@@ -93,9 +93,12 @@ const FeedbackDetails = () => {
     const handleToggleReply = (index) => {
         if (toggleReply === parseInt(index)) {
             setToggleReply(-1);
+
         } else {
             setToggleReply(parseInt(index));
         }
+        setReplyContent('')
+        setTouchedReply(false)
     }
 
 
