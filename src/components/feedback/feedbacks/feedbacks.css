@@ -599,6 +599,10 @@ Link {
         padding-right: 10px;
     }
 
+    .feedback-spacer-small {
+        height: 120px;
+    }
+
     .side-nav {
         height: fit-content;
         position: fixed;
@@ -606,6 +610,7 @@ Link {
         right: 0;
         /* top: 0; */
         z-index: 999;
+
         display: grid;
         grid-template-columns: 100%;
         column-gap: 0px;
@@ -687,13 +692,14 @@ Link {
         right: 0px;
         position: fixed;
         width: 271px;
-        height: fit-content;
+        height: 100%;
         top: 150px;
         padding-top: 25px;
         background: #F7F8FD;
         transition: 0.3s all ease-in-out;
         z-index: 99;
         overflow-y: scroll;
+
 
 
 
