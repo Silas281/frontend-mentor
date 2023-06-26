@@ -437,6 +437,80 @@ Link {
     }
 }
 
+.sort-container .sort-selected {
+    flex-shrink: 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    color: #F2F4FE;
+    font-size: 14px;
+    width: 110%;
+
+}
+
+.sort-container .sort-label {
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+/* .sort-container .sort-selected:hover {
+    border: 1px solid #4661E6;
+} */
+
+.sort-container .sort-selected .sort-selected-icon {
+    color: #FFFFFF !important;
+    margin-top: 7px;
+    font-weight: bolder;
+    font-size: 20px;
+
+}
+
+.sort-container .sort-selected-value {
+    font-weight: bolder;
+    margin-left: 7px;
+
+}
+
+
+.sort-container .sort-list {
+    list-style: none;
+    padding: 0px 0px;
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.35);
+    position: absolute;
+    /* right: ;
+    left: 0; */
+    top: 90%;
+    z-index: 9999;
+    width: 255px;
+
+}
+
+.sort-container .sort-list li {
+    /* padding: 10px 0; */
+    padding: 10px 24px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(58, 67, 116, 0.15000000596046448);
+    display: flex;
+    justify-content: space-between;
+}
+
+.sort-container .sort-list li:hover {
+    color: #AD1FEA;
+}
+
+.sort-container .sort-list li:last-child {
+    border-bottom: none;
+}
+
+.sort-container .sort-list li span {
+    color: #AD1FEA;
+    font-weight: bolder;
+
+}
 
 
 @media screen and (min-width: 992px) {
@@ -453,6 +527,16 @@ Link {
 @media screen and (max-width: 992px) {
     .feedbacks-main {
         grid-template-columns: 100%;
+
+    }
+
+    .sort-container .sort-selected {
+        width: fit-content;
+
+    }
+
+    .sort-container .sort-selected .sort-selected-icon {
+        margin-left: 10px;
 
     }
 
@@ -499,9 +583,14 @@ Link {
     }
 
     .top-nav {
-        position: relative !important;
+        position: fixed;
         border-radius: 0px;
         margin-top: 0;
+        left: 0;
+        right: 0;
+        top: 79px;
+        z-index: 999;
+
 
 
     }
@@ -512,7 +601,9 @@ Link {
 
     .side-nav {
         height: fit-content;
-        position: relative;
+        position: fixed;
+        left: 0;
+        right: 0;
         /* top: 0; */
         z-index: 999;
         display: grid;
@@ -593,15 +684,17 @@ Link {
     }
 
     .drawer.open {
-        right: 21px;
-        position: absolute;
+        right: 0px;
+        position: fixed;
         width: 271px;
-        height: 595px;
-        top: 100px;
+        height: fit-content;
+        top: 150px;
         padding-top: 25px;
         background: #F7F8FD;
         transition: 0.3s all ease-in-out;
         z-index: 99;
+        overflow-y: scroll;
+
 
 
     }

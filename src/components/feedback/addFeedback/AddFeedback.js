@@ -1,19 +1,24 @@
 import React, { useState } from 'react'
-import { IoChevronBack, IoAddSharp } from 'react-icons/io5';
+import { IoChevronBack, IoAddSharp, IoChevronUp, IoChevronDown, IoCheckmark } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 import './AddFeedback.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { addFeedback, selectAllFeedbacks } from '../../../features/feedbacks/FeedbackSlice'
+import capitalizeFirstLetter from '../../../utilities/captaliseFirstLetter'
 
 const AddFeedback = () => {
     const [title, setNewTitle] = useState('');
     const [description, setNewDescription] = useState('')
-    const [category, setNewCategory] = useState('')
+    const [category, setNewCategory] = useState('feature')
     const [status, setNewStatus] = useState('planned')
     const [upvotes] = useState(0)
     const [comments] = useState([])
     const [touchedTile, setTouchedTile] = useState(false)
     const [touchedDescription, setTouchedDescription] = useState(false)
+    const [categoryList] = useState(['feature', 'ui', 'ux', 'enhancement', 'bug'])
+    const [statusList] = useState(['planned', 'in-progress', 'live', 'suggestion'])
+    const [toggleCategorySelect, setCategoryToggleSelect] = useState(false)
+    const [toggleStatusSelect, setStatusToggleSelect] = useState(false)
 
 
 
@@ -57,6 +62,32 @@ const AddFeedback = () => {
         }
     }
 
+    //handle Category Select
+    const handleCategorySelectToggle = (cat) => {
+        setNewCategory(cat);
+        setCategoryToggleSelect(!toggleCategorySelect);
+    }
+
+    //handle Status Select
+
+    const handleStatusSelectToggle = (stat) => {
+        setNewStatus(stat);
+        setStatusToggleSelect(!toggleStatusSelect);
+    }
+
+    //Open Close category Selects
+    const toggleCatSelect = () => {
+        setStatusToggleSelect(false)
+        setCategoryToggleSelect(!toggleCategorySelect)
+    }
+
+    //Open Close status Selects
+    const toggleStatSelect = () => {
+        setCategoryToggleSelect(false)
+        setStatusToggleSelect(!toggleStatusSelect)
+
+    }
+
     return (
         <div className='add-feedback-main'>
             <div className='top-header'>
@@ -92,42 +123,36 @@ const AddFeedback = () => {
                         <p>Category</p>
                         <label htmlFor='category'>Choose a category for your feedback</label>
                         <br />
-                        <select
-                            id='category'
-                            className='custom-select'
-                            type='text'
-                            name='category'
-                            value={category}
-                            onChange={(e) => setNewCategory(e.target.value)}
+                        <div className='selected' onClick={toggleCatSelect} >
+                            <p className='selected-value'>{capitalizeFirstLetter(category)}</p>
+                            <span className='selected-icon'> {toggleCategorySelect ? < IoChevronDown /> : <IoChevronUp />}  </span>
+                        </div>
+                        {toggleCategorySelect && (<ul className='category-list'>
+                            {categoryList.map((cat, index) => (
+                                <li key={index} className='category-item' onClick={() => handleCategorySelectToggle(cat)}> {capitalizeFirstLetter(cat)} {(category === cat) && (<span> <IoCheckmark /> </span>)}  </li>
 
-                        >
-                            <option value='feature'>Feature</option>
-                            <option value='ui'>UI</option>
-                            <option value='ux'>UX</option>
-                            <option value='enhancement'>Enhancement</option>
-                            <option value='bug'>Bug</option>
+                            ))}
+                        </ul>)}
 
-
-                        </select>
                     </div>
+
                     <div className='category-wrapper'>
                         <p>Update Status</p>
                         <label htmlFor='status'>Choose a category for your feedback</label>
                         <br />
-                        <select
-                            id='status'
-                            className='status'
-                            name='status'
-                            value={status}
-                            onChange={(e) => setNewStatus(e.target.value)}
+                        <div className='selected' onClick={toggleStatSelect} >
+                            <p className='selected-value'>{capitalizeFirstLetter(status)}</p>
+                            <span className='selected-icon'> {toggleCategorySelect ? < IoChevronDown /> : <IoChevronUp />}  </span>
+                        </div>
+                        {toggleStatusSelect && (<ul className='category-list'>
+                            {statusList.map((stat, index) => (
+                                <li key={index} className='category-item' onClick={() => handleStatusSelectToggle(stat)}> {capitalizeFirstLetter(stat)} {(status === stat) && (<span> <IoCheckmark /> </span>)}  </li>
 
-                        >
-                            <option value='planned'>Planned</option>
-                            <option value='in-progress'>In-Progress</option>
-                            <option value='live'>Live</option>
-                            <option value='suggestion'>suggestion</option>
-                        </select>
+                            ))}
+                        </ul>)}
+
                     </div>
+
                     <div className='details-wrapper'>
                         <p>Feedback Detail</p>
                         <label htmlFor='details'>Include any specific comments on what should be improved, added, etc.</label>

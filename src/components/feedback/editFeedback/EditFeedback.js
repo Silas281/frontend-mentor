@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { IoChevronBack, IoPencilSharp } from 'react-icons/io5';
+import { IoChevronBack, IoPencilSharp, IoChevronUp, IoChevronDown, IoCheckmark } from 'react-icons/io5';
 import { useNavigate, useParams } from 'react-router-dom';
 import './EditFeedback.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { editFeedback, selectAllFeedbacks, deleteFeedback } from '../../../features/feedbacks/FeedbackSlice';
+import capitalizeFirstLetter from '../../../utilities/captaliseFirstLetter'
 
 const EditFeedback = () => {
     const { id } = useParams();
@@ -14,6 +15,10 @@ const EditFeedback = () => {
     const [status, setNewStatus] = useState('')
     const [touchedTitle, setTouchedTitle] = useState(false);
     const [touchedDescription, setTouchedDescription] = useState(false);
+    const [categoryList] = useState(['feature', 'ui', 'ux', 'enhancement', 'bug'])
+    const [statusList] = useState(['planned', 'in-progress', 'live', 'suggestion'])
+    const [toggleCategorySelect, setCategoryToggleSelect] = useState(false)
+    const [toggleStatusSelect, setStatusToggleSelect] = useState(false)
 
 
 
@@ -40,6 +45,31 @@ const EditFeedback = () => {
     const handleDelete = () => {
         dispatch(deleteFeedback(id));
         navigate('/')
+    }
+    //handle Category Select
+    const handleCategorySelectToggle = (cat) => {
+        setNewCategory(cat);
+        setCategoryToggleSelect(!toggleCategorySelect);
+    }
+
+    //handle Status Select
+
+    const handleStatusSelectToggle = (stat) => {
+        setNewStatus(stat);
+        setStatusToggleSelect(!toggleStatusSelect);
+    }
+
+    //Open Close category Selects
+    const toggleCatSelect = () => {
+        setStatusToggleSelect(false)
+        setCategoryToggleSelect(!toggleCategorySelect)
+    }
+
+    //Open Close status Selects
+    const toggleStatSelect = () => {
+        setCategoryToggleSelect(false)
+        setStatusToggleSelect(!toggleStatusSelect)
+
     }
 
 
@@ -97,38 +127,34 @@ const EditFeedback = () => {
                         <p>Category</p>
                         <label htmlFor='category'>Choose a category for your feedback</label>
                         <br />
-                        <select
-                            id='category'
-                            className='category'
-                            type='text'
-                            name='category'
-                            value={category}
-                            onChange={(e) => setNewCategory(e.target.value)}>
-                            <option value='feature'>Feature</option>
-                            <option value='ui'>UI</option>
-                            <option value='ux'>UX</option>
-                            <option value='enhancement'>Enhancement</option>
-                            <option value='bug'>Bug</option>
+                        <div className='selected' onClick={toggleCatSelect} >
+                            <p className='selected-value'>{capitalizeFirstLetter(category)}</p>
+                            <span className='selected-icon'> {toggleCategorySelect ? < IoChevronDown /> : <IoChevronUp />}  </span>
+                        </div>
+                        {toggleCategorySelect && (<ul className='category-list'>
+                            {categoryList.map((cat, index) => (
+                                <li key={index} className='category-item' onClick={() => handleCategorySelectToggle(cat)}> {capitalizeFirstLetter(cat)} {(category === cat) && (<span> <IoCheckmark /> </span>)}  </li>
 
+                            ))}
+                        </ul>)}
 
-                        </select>
                     </div>
+
                     <div className='category-wrapper'>
                         <p>Update Status</p>
                         <label htmlFor='status'>Choose a category for your feedback</label>
                         <br />
-                        <select
-                            id='status'
-                            className='status'
-                            name='status'
-                            value={status}
-                            onChange={(e) => setNewStatus(e.target.value)}
-                        >
-                            <option value='planned'>Planned</option>
-                            <option value='in-progress'>In-Progress</option>
-                            <option value='live'>Live</option>
-                            <option value='suggestion'>suggestion</option>
-                        </select>
+                        <div className='selected' onClick={toggleStatSelect} >
+                            <p className='selected-value'>{capitalizeFirstLetter(status)}</p>
+                            <span className='selected-icon'> {toggleCategorySelect ? < IoChevronDown /> : <IoChevronUp />}  </span>
+                        </div>
+                        {toggleStatusSelect && (<ul className='category-list'>
+                            {statusList.map((stat, index) => (
+                                <li key={index} className='category-item' onClick={() => handleStatusSelectToggle(stat)}> {capitalizeFirstLetter(stat)} {(status === stat) && (<span> <IoCheckmark /> </span>)}  </li>
+
+                            ))}
+                        </ul>)}
+
                     </div>
                     <div className='details-wrapper'>
                         <p>Feedback Detail</p>

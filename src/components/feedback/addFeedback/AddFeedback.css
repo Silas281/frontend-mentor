@@ -66,6 +66,7 @@ System Colors
     border-radius: 5px;
     width: 100%;
     margin-top: 10px;
+
 }
 
 
@@ -226,4 +227,66 @@ System Colors
 
 .add-feedback-from div {
     margin-bottom: 20px;
+}
+
+.selected {
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    background: #F7F8FD;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #3A4374;
+    cursor: pointer;
+    padding: 13px 24px;
+}
+
+.category-wrapper {
+    position: relative;
+}
+
+.selected:hover {
+    border: 1px solid #4661E6;
+}
+
+.selected span {
+    color: #4661E6;
+}
+
+.category-list {
+    list-style: none;
+    padding: 0px 0px;
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.35);
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 100%;
+    z-index: 9999;
+
+}
+
+.category-list li {
+    /* padding: 10px 0; */
+    padding: 10px 24px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(58, 67, 116, 0.15000000596046448);
+    display: flex;
+    justify-content: space-between;
+}
+
+.category-list li:hover {
+    color: #AD1FEA;
+}
+
+.category-list li:last-child {
+    border-bottom: none;
+}
+
+.category-list li span {
+    color: #AD1FEA;
+    font-weight: bolder;
+
 }
