@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FiPlus } from "react-icons/fi";
 import { FiChevronUp } from "react-icons/fi";
-import { IoChevronBack, IoAddSharp, IoChevronUp, IoChevronDown, IoCheckmark } from 'react-icons/io5';
+import { IoChevronUp, IoChevronDown, IoCheckmark } from 'react-icons/io5';
 import { IoMenuSharp, IoCloseSharp } from 'react-icons/io5';
 import { FaComment } from "react-icons/fa";
 import FeedbackEmpty from "../feedbackEmpty/FeedbackEmpty";
