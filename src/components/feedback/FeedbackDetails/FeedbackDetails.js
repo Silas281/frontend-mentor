@@ -11,6 +11,7 @@ import { selectCurrentUser, fetchCurrentUser } from '../../../features/User/User
 import { selectAllFeedbacks, addComment, addReply } from '../../../features/feedbacks/FeedbackSlice';
 import { countComments } from '../../../utilities/Funcs';
 
+
 const FeedbackDetails = () => {
     const location = useLocation();
     const params = new URLSearchParams(location.search);
@@ -20,6 +21,8 @@ const FeedbackDetails = () => {
     const [toggleReply, setToggleReply] = useState(-1);
     const [commentContent, setCommentContent] = useState('');
     const [replyContent, setReplyContent] = useState('');
+    const [touchedComment, setTouchedComment] = useState(false);
+    const [touchedReply, setTouchedReply] = useState(false);
     const maxLength = 600;
 
     const navigate = useNavigate();
@@ -35,6 +38,11 @@ const FeedbackDetails = () => {
 
 
     const postCommment = () => {
+        if (commentContent === '') {
+            setTouchedComment(true);
+            return
+        }
+
         const newComment = {
             id: feedback.comments ? feedback.comments.length + 1 : 1,
             content: commentContent,
@@ -45,9 +53,14 @@ const FeedbackDetails = () => {
         dispatch(addComment({ id: id, comment: newComment }));
         //feedback.comments.push(newComment);
         setCommentContent('');
+        setTouchedComment(false);
     }
 
     const postReply = () => {
+        if (replyContent === '') {
+            setTouchedReply(true);
+            return
+        }
         //find comment index
         const commentIndex = feedback.comments.findIndex(obj => obj.id === parseInt(toggleReply));
         const newReply = {
@@ -59,6 +72,8 @@ const FeedbackDetails = () => {
         dispatch(addReply({ id: id, commentId: toggleReply, reply: newReply }));
         //feedback.comments[toggleReply].replies.push(newReply);
         setReplyContent('');
+        setToggleReply(-1);
+        setTouchedReply(false);
     }
 
 
@@ -163,9 +178,11 @@ const FeedbackDetails = () => {
                                             rows="4"
                                             cols="50"
                                             value={replyContent}
+                                            onBlur={() => setTouchedReply(true)}
                                             onChange={(e) => setReplyContent(e.target.value)}
                                         >
                                         </textarea>
+                                        {touchedReply && replyContent.length === 0 && <span className='error'>Field is required</span>}
 
                                         <button className='post-btn' onClick={postReply}>Post Reply</button>
                                     </div>
@@ -262,10 +279,12 @@ const FeedbackDetails = () => {
                     rows="6"
                     value={commentContent}
                     maxLength={maxLength}
+                    onBlur={() => setTouchedComment(true)}
                     onChange={(e) => setCommentContent(e.target.value)}
                 >
 
                 </textarea>
+                {touchedComment && commentContent.length === 0 && <span className='error'>Field is required</span>}
                 <div className='add-desc'>
                     <p>{maxLength - commentContent.length} Characters Left</p>
                     <button className='post-comment-btn' onClick={postCommment} >Post Comment</button>
